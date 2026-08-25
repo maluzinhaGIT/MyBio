@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malu ✧ Bio & Links</title>
+    <!-- Ícones oficiais -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Fontes Aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --accent-pink: #ff70a6;
+            --accent-purple: #a06cd5;
+            --accent-cyan: #70d6ff;
+            --bg-glass: rgba(18, 16, 28, 0.70);
+            --bg-glass-hover: rgba(28, 24, 44, 0.90);
+            --border-glass: rgba(255, 255, 255, 0.14);
+            --border-glow: rgba(255, 112, 166, 0.5);
+            --text-main: #f8f9fa;
+            --text-muted: #c4c4dc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            background-color: #0d0b14;
+            overflow-x: hidden;
+        }
+
+        /* TELA CHEIA SEM ROLAGEM NO COMPUTADOR */
+        @media (min-width: 901px) {
+            html, body {
+                height: 100vh;
+                overflow: hidden;
+            }
+        }
+
+        /* 1. FOTO DE FUNDO */
+        .bg-wallpaper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('fundo.jpg') center center / cover no-repeat;
+            z-index: 1;
+            filter: brightness(0.65) contrast(1.1);
+        }
+
+        .bg-gradient-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, 
+                rgba(13, 11, 20, 0.35) 0%, 
+                rgba(20, 14, 33, 0.75) 50%, 
+                rgba(10, 8, 18, 0.95) 100%);
+            z-index: 2;
+        }
+
+        /* 2. ONDA SEPARADORA CENTRAL */
+        .wave-separator {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            transform: translateY(-50%);
+            z-index: 3;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+        .wave-separator svg {
+            width: 100%;
+            height: 60px;
+            display: block;
+        }
+
+        /* 3. CONTAINER PRINCIPAL */
+        .viewport-wrapper {
+            position: relative;
+            z-index: 4;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 30px 45px 20px 45px;
+        }
+
+        /* ESTILO DOS CARDS EM VIDRO */
+        .glass-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: 18px;
+            padding: 20px 22px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 12px 35px rgba(255, 112, 166, 0.25);
+            transform: translateY(-2px);
+        }
+
+        /* PARTE SUPERIOR */
+        .top-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+            height: 45%;
+        }
+
+        .profile-links-group {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        /* FOTO DE PERFIL */
+        .avatar-box {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            min-width: 140px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple), var(--accent-cyan));
+            box-shadow: 0 0 25px rgba(255, 112, 166, 0.45);
+        }
+        .avatar-box img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #0d0b14;
+            display: block;
+        }
+
+        /* LISTA VERTICAL DE LINKS */
+        .links-column {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+        .link-pill {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-glass);
+            padding: 7px 15px;
+            border-radius: 12px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.25s ease;
+            min-width: 150px;
+        }
+        .link-pill i {
+            font-size: 14px;
+            width: 18px;
+            text-align: center;
+            color: var(--accent-pink);
+            transition: color 0.25s ease;
+        }
+        .link-pill:hover {
+            background: var(--bg-glass-hover);
+            border-color: var(--accent-pink);
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(255, 112, 166, 0.3);
+        }
+        .link-pill:hover i {
+            color: #fff;
+        }
+
+        /* CARD BIOGRAFIA */
+        .bio-card {
+            width: 340px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .bio-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            color: var(--accent-pink);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .bio-card h3 span {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+        .bio-card p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text-muted);
+        }
+
+        /* PARTE INFERIOR */
+        .bottom-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 25px;
+            height: 45%;
+        }
+
+        /* JOGOS FAVORITOS */
+        .games-card {
+            width: 300px;
+        }
+        .card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            color: var(--accent-cyan);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .games-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+        .game-item {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 12.5px;
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.04);
+            padding: 6px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .game-item i {
+            color: var(--accent-cyan);
+            font-size: 11px;
+        }
+
+        /* CURIOSIDADES */
+        .trivia-card {
+            width: 300px;
+        }
+        .trivia-card .card-title {
+            color: var(--accent-purple);
+        }
+        .trivia-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            font-size: 12.5px;
+            color: var(--text-muted);
+        }
+        .trivia-list li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            line-height: 1.4;
+        }
+        .trivia-list li i {
+            color: var(--accent-purple);
+            font-size: 12px;
+            width: 14px;
+            text-align: center;
+        }
+
+        /* FRASE SECRETA CENTRAL */
+        .secret-quote-box {
+            position: absolute;
+            bottom: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+        .secret-quote {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13.5px;
+            font-style: italic;
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(255, 112, 166, 0.6);
+            background: rgba(13, 11, 20, 0.65);
+            backdrop-filter: blur(8px);
+            padding: 7px 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            display: inline-block;
+        }
+
+        /* RESPONSIVIDADE PARA CELULAR */
+        @media (max-width: 900px) {
+            .viewport-wrapper {
+                height: auto;
+                min-height: 100vh;
+                padding: 30px 20px 40px 20px;
+                gap: 25px;
+            }
+            .top-section, .bottom-section {
+                flex-direction: column;
+                height: auto;
+                align-items: center;
+                gap: 20px;
+            }
+            .profile-links-group {
+                flex-direction: column;
+                width: 100%;
+            }
+            .links-column {
+                width: 100%;
+                max-width: 320px;
+            }
+            .link-pill {
+                justify-content: center;
+            }
+            .bio-card, .games-card, .trivia-card {
+                width: 100%;
+                max-width: 340px;
+            }
+            .wave-separator {
+                display: none;
+            }
+            .secret-quote-box {
+                position: relative;
+                bottom: 0;
+                left: 0;
+                transform: none;
+                margin-top: 10px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. IMAGEM DE FUNDO (WALLPAPER) -->
+    <div class="bg-wallpaper"></div>
+    <div class="bg-gradient-overlay"></div>
+
+    <!-- 2. ONDA DECORATIVA CENTRAL -->
+    <div class="wave-separator">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0 C150,90 350,-40 500,60 C650,160 900,-20 1200,40 L1200,120 L0,120 Z" fill="none" stroke="rgba(255, 112, 166, 0.4)" stroke-width="2"></path>
+            <path d="M0,20 C200,110 400,-20 600,80 C800,180 1000,0 1200,60 L1200,120 L0,120 Z" fill="none" stroke="rgba(112, 214, 255, 0.25)" stroke-width="1.5"></path>
+        </svg>
+    </div>
+
+    <!-- 3. CONTEÚDO PRINCIPAL -->
+    <div class="viewport-wrapper">
+
+        <!-- PARTE SUPERIOR -->
+        <div class="top-section">
+            
+            <div class="profile-links-group">
+                <!-- FOTO DE PERFIL -->
+                <div class="avatar-box">
+                    <img src="foto.jpg" alt="Foto Malu">
+                </div>
+
+                <!-- LISTA DE LINKS SOCIAIS -->
+                <div class="links-column">
+                    <a href="https://www.twitch.tv/maluuelfica" target="_blank" class="link-pill">
+                        <i class="fa-brands fa-twitch"></i>
+                        <span>Twitch</span>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="link-pill">
+                        <i class="fa-brands fa-instagram"></i>
+                        <span>Instagram  "n vinculei ainda"</span>
+                    </a>
+                    <a href="https://discord.com" target="_blank" class="link-pill">
+                        <i class="fa-brands fa-discord"></i>
+                        <span>Meu disc @maluzinhas2_</span>
+                    </a>
+                    <a href="https://spotify.com" target="_blank" class="link-pill">
+                        <i class="fa-brands fa-spotify"></i>
+                        <span>Spotify  "n vinculei ainda"</span>
+                    </a>
+                    <a href="https://tiktok.com" target="_blank" class="link-pill">
+                        <i class="fa-brands fa-tiktok"></i>
+                        <span>TikTok  "n vinculei ainda"</span>
+                    </a>
+                    <a href="https://steamcommunity.com/id/maluzinhasteam/" target="_blank" class="link-pill">
+    <i class="fa-brands fa-steam"></i>
+    <span>Steam</span>
+</a>
+                </div>
+            </div>
+
+            <!-- TEXTO DE BIOGRAFIA -->
+            <div class="glass-card bio-card">
+                <h3>✧ Maluzinha <span>(Ela/Dela)</span></h3>
+                <p>
+                    Oie, ser humano perdido que caiu aqui 🫵🏻
+
+Meu nome é Maria Luiza, mas pode me chamar de Malu (⚞ ᴥ ⚟) Moro no interior de Goiás, vulgo fim do mundo e você cale sua boca KKKKK. Sou estudante de TI, nerdola nas horas vagas (que são todas), viciada em jogos, animes, livros e qualquer coisa que envolva ficar no PC por horas.
+
+Tenho um humor meio duvidoso, sou 50% fofinha e 50% problema. Prometo ser legal, só não prometo ser normal 😭
+
+Vamo ser amigos ou vai ficar só olhando meu perfil igual NPC? :3
+                </p>
+            </div>
+
+        </div>
+
+        <!-- PARTE INFERIOR -->
+        <div class="bottom-section">
+            
+            <!-- JOGOS FAVORITOS -->
+            <div class="glass-card games-card">
+                <div class="card-title">
+                    <i class="fa-solid fa-gamepad"></i>
+                    <span>Jogos Favoritos</span>
+                </div>
+                <ul class="games-list">
+                    <li class="game-item"><i class="fa-solid fa-star"></i> Minecraft </li>
+                    <li class="game-item"><i class="fa-solid fa-star"></i>The Coffin of Andy and Leyley</li>
+<li class="game-item"><i class="fa-solid fa-star"></i>Stardew Valley</li>
+<li class="game-item"><i class="fa-solid fa-star"></i>Leafy Corner</li>
+                    <li class="game-item"><i class="fa-solid fa-star"></i>Life is strange</li>
+<li class="game-item"><i class="fa-solid fa-star"></i>Todos Resident Evil</li>
+                    <li class="game-item"><i class="fa-solid fa-star"></i>Miside</li>
+<li class="game-item"><i class="fa-solid fa-star"></i>Nier: Automata 2B RABUDAAAA</li>
+<li class="game-item"><i class="fa-solid fa-star"></i>elden ring (n joguei ainda mas já é)xD</li>
+                </ul>
+            </div>
+
+            <!-- CURIOSIDADES / FATOS -->
+            <div class="glass-card trivia-card">
+                <div class="card-title">
+                    <i class="fa-solid fa-sparkles"></i>
+                    <span>Sobre Mim</span>
+                </div>
+                <ul class="trivia-list">
+                    <li><i class="fa-regular fa-heart"></i> <strong>Signo:</strong> Virgem ♍</li>
+                    <li><i class="fa-solid fa-headphones"></i> <strong>Música:</strong> Amo LoFi</li>
+                    <li><i class="fa-solid fa-cat"></i> Amante de gatinhos e sorvete de limão</li>
+                    <li><i class="fa-solid fa-palette"></i>problematica e visualmente estranha</li>
+<li><i class="fa-solid fa-palette"></i>Cosplayer de baixa renda nas horas vagas</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- FRASE CENTRALIZADA -->
+        <div class="secret-quote-box">
+            <div class="secret-quote">
+                "toda estrututa e design do site feio por maluzinha." (つ✧ω✧)つ
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
